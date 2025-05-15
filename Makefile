@@ -31,7 +31,7 @@ INC_PATH		= .
 LIBS_PATH		= lib
 BUILD_PATH		= .build
 
-FILES	= test.c
+FILES	= main.c game.c init_map.c create_map.c free.c init_player.c
 
 SRC						= $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS					= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
@@ -50,7 +50,7 @@ MLX_ARC				= $(MLX_PATH)/libmlx_Linux.a
 
 CC						= cc
 
-CFLAGS				= -Wall -Wextra -Werror
+CFLAGS				= -Wall -Wextra -Werror -g
 
 RFLAGS				= -lm -lX11 -lXext
 INC						= -I $(INC_PATH)
@@ -59,7 +59,7 @@ RM		= rm -rf
 AR		= ar rcs
 MKDIR_P	= mkdir -p
 
-#=======================================================fi;=======================#
+#==============================================================================#
 #                                  RULES                                       #
 #==============================================================================#
 
