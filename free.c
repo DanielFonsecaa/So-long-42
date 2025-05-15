@@ -30,6 +30,7 @@ void	ft_free_img(t_game *game)
 	i = 0;
 	if (game->img)
 	{
+		game->pos--;
 		while (game->pos >= 0)
 		{
 			if (game->img[game->pos].img)
