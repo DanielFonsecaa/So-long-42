@@ -13,7 +13,7 @@
 # define HAT "textures/hat.xpm"
 # define FLOOR "textures/floor.xpm"
 # define NARUTO "textures/naruto.xpm"
-# define HINATA "textures/hinata.xpm"
+# define HINATA "textures/gate.xpm"
 # define SIZE 64
 
 typedef struct s_map
@@ -22,6 +22,11 @@ typedef struct s_map
 	int	height;
 	int	start_x;
 	int	start_y;
+	int	is_collect;
+	int	is_exit;
+	int	is_player;
+	int	is_wall;
+	int	is_floor;
 	char	**design;
 }	t_map;
 
@@ -66,5 +71,22 @@ void ft_free(t_game *game);
 void	ft_start(t_map *map, t_player *player, t_game game);
 int	ft_init_p(t_player *player);
 int main(int argc, char **argv);
+void	ft_up(t_game *game);
+void	ft_left(t_game *game);
+void	ft_down(t_game *game);
+void	ft_rigth(t_game *game);
+void	is_movement(int keysym, t_game *game);
+int	ft_check_up(t_game *game);
+int	ft_check_down(t_game *game);
+int	ft_check_left(t_game *game);
+int	ft_check_rigth(t_game *game);
+int	ft_check_map_goals(t_map *map);
+int	ft_check_walls(t_map *map);
+int	ft_check_bad_map(t_map *map);
+int	ft_check_all(t_map *map, char *file);
+int	ft_check_path(t_map *map, char *file);
+void	ft_find_path(t_map *map, int x, int y);
+int	is_goal(char c);
+void	ft_get_p(t_map *map);
 
 #endif

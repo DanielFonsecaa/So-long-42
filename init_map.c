@@ -79,5 +79,6 @@ int	ft_init_map(t_map *map, char *file)
 	ft_put_value(map);
 	ft_mapsize(map, file);
 	ft_fill(map, file);
+	ft_check_all(map, file);
 	return (1);
 }

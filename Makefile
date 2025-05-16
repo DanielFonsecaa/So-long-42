@@ -31,7 +31,7 @@ INC_PATH		= .
 LIBS_PATH		= lib
 BUILD_PATH		= .build
 
-FILES	= main.c game.c init_map.c create_map.c free.c init_player.c
+FILES	= main.c game.c movements.c check_mov.c check_map.c check_player.c init_map.c create_map.c free.c init_player.c
 
 SRC						= $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS					= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)

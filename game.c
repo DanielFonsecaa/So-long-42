@@ -12,6 +12,18 @@
 
 #include "so_long.h"
 
+void	is_movement(int keysym, t_game *game)
+{
+	if (keysym == XK_w)
+		ft_up(game);
+	if (keysym == XK_a)
+		ft_left(game);
+	if (keysym == XK_s)
+		ft_down(game);
+	if (keysym == XK_d)
+		ft_rigth(game);
+}
+
 int	handle_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
@@ -20,7 +32,7 @@ int	handle_input(int keysym, t_game *game)
 		exit(1);
 	}
 	else 
-		ft_printf("keycode -- %d\n", keysym);
+		is_movement(keysym, game);
 	return (0);
 }
 void	ft_start(t_map *map, t_player *player, t_game game)
@@ -42,7 +54,7 @@ void	ft_start(t_map *map, t_player *player, t_game game)
 		ft_printf("something went wrong rendering the game");
 		ft_free(&game);
 	}
-	mlx_key_hook(game.win, handle_input, &game);
+	mlx_hook(game.win, 2, 1L << 0, &handle_input, &game);
 	mlx_loop(game.mlx);
 	mlx_destroy_window(game.mlx, game.win);
 	mlx_destroy_display(game.mlx);
