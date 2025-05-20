@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-fons <dda-fons@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:12:26 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/16 16:13:15 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:49:04 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	ft_get_p(t_map *map)
 {
@@ -60,6 +60,7 @@ void	ft_find_path(t_map *map, int x, int y)
 	}
 	if (map->design[y][x] == 'E')
 		return ;
+	map->design[y][x] = 'F';
 	ft_find_path(map, x - 1, y);
 	ft_find_path(map, x + 1, y);
 	ft_find_path(map, x, y - 1);
@@ -72,23 +73,16 @@ int	ft_check_path(t_map *map, char *file)
 	int	x;
 	int	y;
 
-	ft_printf("entrei");
 	ft_get_p(map);
-
-	ft_printf("passei player \n");
 	x = map->start_x;
 	y = map->start_y;
 	n_collect = map->is_collect;
-	//ft_find_path(map, x, y);
-
-	//ft_printf("passei find path \n");
+	ft_find_path(map, x, y);
 	ft_free_design(map);
-
-	ft_printf("passei free \n");
 	ft_fill(map, file);
-
-	ft_printf("passei fill \n");
-	//if (n_collect != 0 || map->is_exit)
-	//	return (0);
+	if (map->is_collect != 0 || map->is_exit)
+		return (0);
+	map->is_collect = n_collect;
+	map->is_exit = 1;
 	return (1);
 }

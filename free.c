@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:45:29 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/15 18:40:12 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:11:28 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,10 @@ void	ft_free_img(t_game *game)
 		while (game->pos >= 0)
 		{
 			if (game->img[game->pos].img)
-			{
 				mlx_destroy_image(game->mlx, game->img[game->pos].img);
-				game->img[game->pos].img = NULL;
-			}
 			game->pos--;
 		}
 		free(game->img);
-		game->img = NULL;
 	}
 }
 
@@ -55,4 +51,5 @@ void ft_free(t_game *game)
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	exit(0);
 }

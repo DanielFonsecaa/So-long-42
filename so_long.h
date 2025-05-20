@@ -7,13 +7,15 @@
 # include <stdlib.h>
 # include <X11/X.h>
 
+# define EXTENSION ".ber"
 # define WALL_WOOD "textures/wood.xpm"
 # define WALL_BUSH "textures/bush.xpm"
 # define WALL_TREE "textures/tree.xpm"
 # define HAT "textures/hat.xpm"
 # define FLOOR "textures/floor.xpm"
 # define NARUTO "textures/naruto.xpm"
-# define HINATA "textures/gate.xpm"
+# define HINATA_BACK "textures/hinata_back.xpm"
+# define HINATA "textures/hinata.xpm"
 # define SIZE 64
 
 typedef struct s_map
@@ -88,5 +90,8 @@ int	ft_check_path(t_map *map, char *file);
 void	ft_find_path(t_map *map, int x, int y);
 int	is_goal(char c);
 void	ft_get_p(t_map *map);
+void	ft_finish(t_game *game);
+int	ft_quit(t_game *game);
+int	ft_check_map_name(char *file);
 
 #endif

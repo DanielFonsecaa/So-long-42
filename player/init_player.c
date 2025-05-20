@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-fons <dda-fons@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:20:45 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/15 13:22:11 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:49:05 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_init_p(t_player *player)
 {

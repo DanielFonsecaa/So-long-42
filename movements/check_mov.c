@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_mov.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-fons <dda-fons@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:12:26 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/16 16:13:15 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:49:03 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_check_up(t_game *game)
 {
@@ -28,7 +28,10 @@ int	ft_check_up(t_game *game)
 	}
 	if (game->map->design[y - 1][x] == 'E' && !game->map->is_collect)
 	{
-		ft_printf("You Win");
+		game->player->moves++;
+		ft_printf("You Won\n");
+		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		return (ft_finish(game), 0);
 	}
 	if (game->map->design[y - 1][x] == 'E' && game->map->is_collect)
 		return (0);
@@ -51,7 +54,10 @@ int	ft_check_down(t_game *game)
 	}
 	if (game->map->design[y + 1][x] == 'E' && !game->map->is_collect)
 	{
-		ft_printf("You Win");
+		game->player->moves++;
+		ft_printf("You Won\n");
+		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		return (ft_finish(game), 0);
 	}
 	if (game->map->design[y + 1][x] == 'E' && game->map->is_collect)
 		return (0);
@@ -74,7 +80,10 @@ int	ft_check_left(t_game *game)
 	}
 	if (game->map->design[y][x - 1] == 'E' && !game->map->is_collect)
 	{
-		ft_printf("You Win");
+		game->player->moves++;
+		ft_printf("You Won\n");
+		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		return (ft_finish(game), 0);
 	}
 	if (game->map->design[y][x - 1] == 'E' && game->map->is_collect)
 		return (0);
@@ -89,10 +98,7 @@ int	ft_check_rigth(t_game *game)
 	x = game->player->x;
 	y = game->player->y;
 	if (game->map->design[y][x + 1] == '1')
-	{
-		ft_printf("nao posso andar direita 'e parede");
 		return (0);
-	}	
 	if (game->map->design[y][x + 1] == 'C')
 	{
 		game->map->is_collect--;
@@ -100,13 +106,12 @@ int	ft_check_rigth(t_game *game)
 	}
 	if (game->map->design[y][x + 1] == 'E' && !game->map->is_collect)
 	{
-		ft_printf("You Win");
+		game->player->moves++;
+		ft_printf("You Won\n");
+		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		return (ft_finish(game), 0);
 	}
-	if (game->map->design[y][x + 1] == 'E' && game->map->is_collect)
-	{
-		ft_printf("nao andar direita");
+	else if (game->map->design[y][x + 1] == 'E' && game->map->is_collect)
 		return (0);
-	}
-	ft_printf("posso andar direita");
 	return (1);
 }

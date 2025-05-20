@@ -6,11 +6,11 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:32:38 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/15 18:40:11 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:49:02 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void ft_put_value(t_map *map)
 {
@@ -18,6 +18,11 @@ void ft_put_value(t_map *map)
 	map->height = 0;
 	map->start_x = 0;
 	map->start_y = 0;
+	map->is_collect = 0;
+	map->is_exit = 0;
+	map->is_player = 0;
+	map->is_wall = 0;
+	map->is_floor = 0;
 	map->design = NULL;
 }
 
@@ -75,10 +80,19 @@ int	ft_mapsize(t_map *map, char *file)
 
 int	ft_init_map(t_map *map, char *file)
 {
+	int fd;
+	
 	map = ft_memset(map, 0, sizeof(t_map));
+	fd = open(file, O_RDONLY);
+	close(fd);
+	if (fd < 0)
+		return (ft_printf("Error\nNo map found\n"), 0);
 	ft_put_value(map);
 	ft_mapsize(map, file);
+	//if (map->invalid)
+	//	return (ft_printf("Error\nLines size different\n"), 0);
 	ft_fill(map, file);
-	ft_check_all(map, file);
+	if (!ft_check_all(map, file))
+		return (0);
 	return (1);
 }
