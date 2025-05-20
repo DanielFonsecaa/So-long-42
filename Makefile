@@ -26,8 +26,8 @@ _SEP 			= =====================
 #                                    PATHS                                     #
 #==============================================================================#
 
-SRC_PATH		= .
-INC_PATH		= .
+SRC_PATH		= src
+INC_PATH		= src
 LIBS_PATH		= lib
 BUILD_PATH		= .build
 
@@ -83,14 +83,12 @@ deps:		## Download/Update deps
 	
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c $(HEADERS)
+	@mkdir -p $(dir $@)
 	@echo -n "$(MAG)█$(D)"
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(BUILD_PATH):
 	$(MKDIR_P) $(BUILD_PATH)
-	$(MKDIR_P) $(BUILD_PATH)/check_map
-	$(MKDIR_P) $(BUILD_PATH)/player
-	$(MKDIR_P) $(BUILD_PATH)/movements
 	@echo "* $(YEL)Creating $(CYA)$(BUILD_PATH)$(YEL) folder:$(D) $(_SUCCESS)"
 
 $(LIBFT_ARC):

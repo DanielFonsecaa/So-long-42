@@ -13,11 +13,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "lib/mlx/mlx.h"
-# include "lib/libft/libft/libft.h"
-# include <X11/keysym.h>
+# include "../lib/mlx/mlx.h"
+# include "../lib/libft/libft/libft.h"
+# include <../X11/keysym.h>
 # include <stdlib.h>
-# include <X11/X.h>
+# include <../X11/X.h>
 
 # define EXTENSION ".ber"
 # define WALL_WOOD "textures/wood.xpm"
