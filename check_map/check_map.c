@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:12:26 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 16:49:01 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:39:50 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ int	ft_check_bad_map(t_map *map)
 		x = 0;
 		while (x < map->width -1)
 		{
-			if (map->design[y][x] != '1' && map->design[y][x] != 'E' && map->design[y][x] != 'C' && map->design[y][x] != 'P' && map->design[y][x] != '0')
+			if (map->design[y][x] != '1' && map->design[y][x]
+				!= 'E' && map->design[y][x]
+				!= 'C' && map->design[y][x]
+				!= 'P' && map->design[y][x]
+				!= '0')
 				return (0);
 			x++;
 		}
@@ -86,7 +90,7 @@ int	ft_check_bad_map(t_map *map)
 
 int	ft_check_map_name(char *file)
 {
-	char *str;
+	char	*str;
 
 	str = ft_strrchr(file, '.');
 	if (!str || ft_strncmp(str, EXTENSION, ft_strlen(EXTENSION) + 1))
@@ -96,7 +100,8 @@ int	ft_check_map_name(char *file)
 
 int	ft_check_all(t_map *map, char *file)
 {
-	if ((map->height < 5 && map->width < 3) || (map->height < 3 && map->width < 5))
+	if ((map->height < 5 && map->width < 3)
+		|| (map->height < 3 && map->width < 5))
 		return (ft_printf("Error\nMap too small\n")
 			, 0);
 	if (!ft_check_bad_map(map))
@@ -104,7 +109,8 @@ int	ft_check_all(t_map *map, char *file)
 	if (!ft_check_walls(map))
 		return (ft_printf("Error\nMap not enclosed/surrounded by walls\n"), 0);
 	if (!ft_check_map_goals(map))
-		return (ft_printf("Error\nMap does not have a item to collect, or just 1 exit or just 1 player\n"), 0);
+		return (ft_printf("Error\nMap does not have a item to collect, \
+	or just 1 exit or just 1 player\n"), 0);
 	if (!ft_check_map_name(file))
 		return (ft_printf("Error\nFile name must end with %s\n", EXTENSION), 0);
 	if (!ft_check_path(map, file))

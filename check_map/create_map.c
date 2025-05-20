@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:48:52 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 16:49:02 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:36:45 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,22 @@ int	ft_put_img_in_window(t_game *game, int x, int y, t_map *map)
 	char	*relative_path;
 
 	if (game->pos >= (game->map->height * game->map->width))
-		return (ft_printf("Error\ngame->pos exceeds allocated size for game->img\n"), 1);
+		return (ft_printf("Error\ngame->pos exceeds size for game->img\n"), 1);
 	relative_path = NULL;
 	relative_path = ft_selec_img(x, y, map);
 	if (!relative_path)
-		return (ft_printf("Error\nFailed to select image for x=%d, y=%d\n", x, y), 0);
+		return (ft_printf("Error\nFailed to select image for x, y\n", x, y), 0);
 	img_width = SIZE;
 	img_height = SIZE;
-	game->img[game->pos].img = mlx_xpm_file_to_image(game->mlx, relative_path, &img_width, &img_height);
+	game->img[game->pos].img = mlx_xpm_file_to_image(game->mlx,
+			relative_path, &img_width, &img_height);
 	if (!game->img[game->pos].img)
-		return (ft_printf("Error\nFailed to load image '%s'\n", relative_path), 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->img[game->pos++].img, x * SIZE, y * SIZE);
+	{
+		ft_printf("Error\nFailed to load image '%s'\n", relative_path);
+		return (0);
+	}
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->img[game->pos++].img, x * SIZE, y * SIZE);
 	return (1);
 }
 

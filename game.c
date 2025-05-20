@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:22:46 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 17:11:25 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:42:44 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ int	handle_input(int keysym, t_game *game)
 		ft_quit(game);
 		exit(1);
 	}
-	else 
+	else
 		is_movement(keysym, game);
 	return (0);
 }
+
 void	ft_start(t_map *map, t_player *player, t_game game)
 {
 	game.map = map;
@@ -63,7 +64,8 @@ void	ft_start(t_map *map, t_player *player, t_game game)
 		return ;
 	}
 	game.pos = 0;
-	game.win = mlx_new_window(game.mlx, map->width * SIZE, map->height * SIZE, "rui sucks");
+	game.win = mlx_new_window(game.mlx, map->width * SIZE,
+			map->height * SIZE, "rui sucks");
 	if (!ft_render_map(&game))
 	{
 		ft_printf("Error\n Could not render the game");

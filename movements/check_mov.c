@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:12:26 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 16:49:03 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:40:13 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	ft_check_up(t_game *game)
 	{
 		game->player->moves++;
 		ft_printf("You Won\n");
-		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		ft_printf("You did %d moves\nThis is the best you can do?\n",
+			game->player->moves);
 		return (ft_finish(game), 0);
 	}
 	if (game->map->design[y - 1][x] == 'E' && game->map->is_collect)
@@ -56,7 +57,8 @@ int	ft_check_down(t_game *game)
 	{
 		game->player->moves++;
 		ft_printf("You Won\n");
-		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		ft_printf("You did %d moves\nThis is the best you can do?\n",
+			game->player->moves);
 		return (ft_finish(game), 0);
 	}
 	if (game->map->design[y + 1][x] == 'E' && game->map->is_collect)
@@ -82,7 +84,8 @@ int	ft_check_left(t_game *game)
 	{
 		game->player->moves++;
 		ft_printf("You Won\n");
-		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		ft_printf("You did %d moves\nThis is the best you can do?\n",
+			game->player->moves);
 		return (ft_finish(game), 0);
 	}
 	if (game->map->design[y][x - 1] == 'E' && game->map->is_collect)
@@ -108,7 +111,8 @@ int	ft_check_rigth(t_game *game)
 	{
 		game->player->moves++;
 		ft_printf("You Won\n");
-		ft_printf("You did %d moves\nThis is the best you can do?\n", game->player->moves);
+		ft_printf("You did %d moves\nThis is the best you can do?\n",
+			game->player->moves);
 		return (ft_finish(game), 0);
 	}
 	else if (game->map->design[y][x + 1] == 'E' && game->map->is_collect)

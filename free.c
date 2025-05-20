@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:45:29 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 17:11:28 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:42:12 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_free_design(t_map *map)
 void	ft_free_img(t_game *game)
 {
 	int	i;
+
 	i = 0;
 	if (game->img)
 	{
@@ -41,7 +42,7 @@ void	ft_free_img(t_game *game)
 	}
 }
 
-void ft_free(t_game *game)
+void	ft_free(t_game *game)
 {
 	if (game->map)
 		ft_free_design(game->map);

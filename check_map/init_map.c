@@ -6,13 +6,13 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:32:38 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 16:49:02 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:39:06 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void ft_put_value(t_map *map)
+void	ft_put_value(t_map *map)
 {
 	map->width = 0;
 	map->height = 0;
@@ -26,7 +26,7 @@ void ft_put_value(t_map *map)
 	map->design = NULL;
 }
 
-int ft_linelen(char *str)
+int	ft_linelen(char *str)
 {
 	int	i;
 
@@ -46,8 +46,7 @@ void	ft_fill(t_map *map, char *file)
 		return ;
 	i = 0;
 	map->design = malloc(sizeof(char *) * (map->height));
-    i = 0;
-    if (!map->design)
+	if (!map->design)
 	{
 		close(fd);
 		return ;
@@ -80,8 +79,8 @@ int	ft_mapsize(t_map *map, char *file)
 
 int	ft_init_map(t_map *map, char *file)
 {
-	int fd;
-	
+	int	fd;
+
 	map = ft_memset(map, 0, sizeof(t_map));
 	fd = open(file, O_RDONLY);
 	close(fd);
