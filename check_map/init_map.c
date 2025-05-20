@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:32:38 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/20 18:39:06 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/20 19:19:32 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ int	ft_mapsize(t_map *map, char *file)
 {
 	int		fd;
 	char	*str;
+	int		i;
 
 	fd = open(file, O_RDONLY);
-	map->height = 0;
+	str = get_next_line(fd);
+	map->height = 1;
+	i = ft_linelen(str);
 	while (1)
 	{
 		str = get_next_line(fd);
@@ -70,6 +73,8 @@ int	ft_mapsize(t_map *map, char *file)
 			break ;
 		map->height++;
 		map->width = ft_linelen(str);
+		if (map->width != i)
+			return (0);
 		free(str);
 		str = NULL;
 	}
@@ -87,9 +92,8 @@ int	ft_init_map(t_map *map, char *file)
 	if (fd < 0)
 		return (ft_printf("Error\nNo map found\n"), 0);
 	ft_put_value(map);
-	ft_mapsize(map, file);
-	//if (map->invalid)
-	//	return (ft_printf("Error\nLines size different\n"), 0);
+	if (!ft_mapsize(map, file))
+		return (ft_printf("Error\nLines size different\n"), 0);
 	ft_fill(map, file);
 	if (!ft_check_all(map, file))
 		return (0);
