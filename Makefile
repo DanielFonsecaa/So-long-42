@@ -31,6 +31,7 @@ INC_PATH		= .
 LIBS_PATH		= lib
 BUILD_PATH		= .build
 
+
 FILES	= main.c game.c movements/movements.c movements/check_mov.c check_map/check_map.c \
 	player/check_player.c check_map/init_map.c check_map/create_map.c free.c player/init_player.c
 
@@ -87,6 +88,9 @@ $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c $(HEADERS)
 
 $(BUILD_PATH):
 	$(MKDIR_P) $(BUILD_PATH)
+	$(MKDIR_P) $(BUILD_PATH)/check_map
+	$(MKDIR_P) $(BUILD_PATH)/player
+	$(MKDIR_P) $(BUILD_PATH)/movements
 	@echo "* $(YEL)Creating $(CYA)$(BUILD_PATH)$(YEL) folder:$(D) $(_SUCCESS)"
 
 $(LIBFT_ARC):
