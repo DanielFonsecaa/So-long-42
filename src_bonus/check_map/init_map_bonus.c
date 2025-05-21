@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   init_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	ft_put_value(t_map *map)
 {
@@ -21,6 +21,7 @@ void	ft_put_value(t_map *map)
 	map->is_collect = 0;
 	map->is_exit = 0;
 	map->is_player = 0;
+	map->is_enemy = 0;
 	map->is_floor = 0;
 	map->design = NULL;
 }

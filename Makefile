@@ -12,7 +12,7 @@ MLX_URL			= https://cdn.intra.42.fr/document/document/32396/minilibx-linux.tgz
 #==============================================================================#
 
 NAME 			= so_long
-
+NAME_BONUS 		= so_long_bonus
 ### Message Vars
 _SUCCESS 		= [$(GRN)SUCCESS$(D)]
 _INFO 			= [$(BLU)INFO$(D)]
@@ -31,6 +31,10 @@ INC_PATH		= src
 LIBS_PATH		= lib
 BUILD_PATH		= .build
 
+BONUS_SRC_PATH		= src_bonus
+BONUS_INC_PATH		= src_bonus
+BONUS_BUILD_PATH		= .build_bonus
+
 
 FILES	= main.c game.c movements/movements.c movements/check_mov.c check_map/check_map.c \
 	player/check_player.c check_map/init_map.c check_map/create_map.c free.c player/init_player.c
@@ -38,6 +42,17 @@ FILES	= main.c game.c movements/movements.c movements/check_mov.c check_map/chec
 SRC						= $(addprefix $(SRC_PATH)/, $(FILES))
 OBJS					= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
 HEADERS				= $(INC_PATH)/so_long.h
+
+BONUS_FILES	= main_bonus.c game_bonus.c movements/movements_bonus.c movements/check_mov_bonus.c \
+				check_map/check_map_bonus.c player/check_player_bonus.c check_map/init_map_bonus.c \
+				check_map/create_map_bonus.c free_bonus.c player/init_player_bonus.c \
+				enemy/init_enemy_bonus.c animation/animation_bonus.c animation/animation2_bonus.c  
+
+BONUS_SRC						= $(addprefix $(BONUS_SRC_PATH)/, $(BONUS_FILES))
+BONUS_OBJS					= $(BONUS_SRC:$(BONUS_SRC_PATH)/%.c=$(BONUS_BUILD_PATH)/%.o)
+BONUS_HEADERS				= $(BONUS_INC_PATH)/so_long_bonus.h
+
+
 
 LIBFT_PATH		= $(LIBS_PATH)/libft
 LIBFT_ARC			= $(LIBFT_PATH)/libft.a
@@ -56,6 +71,7 @@ CFLAGS				= -Wall -Wextra -Werror -g
 
 RFLAGS				= -lm -lX11 -lXext
 INC						= -I $(INC_PATH)
+BONUS_INC						= -I $(BONUS_INC_PATH)
 
 RM		= rm -rf
 AR		= ar rcs
@@ -118,15 +134,34 @@ get_mlx:
 		echo "* $(GRN)MLX submodule already exists 🖔"; \
 	fi
 
+#BONUS RULES
+
+bonus: all $(BONUS_BUILD_PATH) $(NAME_BONUS)	## Compile
+
+$(NAME_BONUS): $(BONUS_BUILD_PATH) $(LIBFT_ARC) $(MLX_ARC) $(BONUS_OBJS)
+	@echo "$(YEL)Compiling $(MAG)$(NAME)$(YEL) mandatory version$(D)"
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(BONUS_INC) $(LIBFT_ARC) $(MLX_ARC) $(RFLAGS) -o $(NAME_BONUS)
+	@echo "[$(_SUCCESS) compiling $(MAG)$(NAME_BONUS)$(D) $(YEL)🖔$(D)]"
+
+$(BONUS_BUILD_PATH)/%.o: $(BONUS_SRC_PATH)/%.c $(BONUS_HEADERS)
+	@mkdir -p $(dir $@)
+	@echo -n "$(MAG)█$(D)"
+	$(CC) $(CFLAGS) $(BONUS_INC) -c $< -o $@
+
+$(BONUS_BUILD_PATH):
+	$(MKDIR_P) $(BONUS_BUILD_PATH)
+	@echo "* $(YEL)Creating $(CYA)$(BONUS_BUILD_PATH)$(YEL) folder:$(D) $(_SUCCESS)"
+
+
 clean:				## Remove object files
 	@echo "*** $(YEL)Cleaning object files$(D)"
-	$(RM) $(BUILD_PATH); \
-	echo "* $(YEL)Removing $(CYA)$(BUILD_PATH)$(D) folder & files$(D): $(_SUCCESS)"; \
+	$(RM) $(BUILD_PATH) $(BONUS_BUILD_PATH); \
+	echo "* $(YEL)Removing $(CYA)$(BUILD_PATH) $(BONUS_BUILD_PATH)$(D) folder & files$(D): $(_SUCCESS)"; \
 
 fclean: clean			## Remove executable and .gdbinit
 	@echo "*** $(YEL)Cleaning executables$(D)"
-	$(RM) $(NAME);
-	echo "* $(YEL)Removing $(CYA)$(NAME)$(D) file: $(_SUCCESS)"; \
+	$(RM) $(NAME) $(NAME_BONUS);
+	echo "* $(YEL)Removing $(CYA)$(NAME) $(NAME_BONUS)$(D) file: $(_SUCCESS)"; \
 
 libclean: fclean	## Remove libs
 	@echo "*** $(YEL)Cleaning libraries$(D)"

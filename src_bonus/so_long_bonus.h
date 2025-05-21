@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 18:51:18 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/21 14:29:24 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/21 19:40:11 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../lib/mlx/mlx.h"
 # include "../lib/libft/libft/libft.h"
@@ -20,15 +20,23 @@
 # include <../X11/X.h>
 
 # define EXTENSION ".ber"
-# define WALL_WOOD "textures/wood.xpm"
-# define WALL_BUSH "textures/bush.xpm"
-# define WALL_TREE "textures/tree.xpm"
+# define WALL "textures/tree.xpm"
 # define HAT "textures/hat.xpm"
 # define FLOOR "textures/floor.xpm"
 # define NARUTO "textures/naruto.xpm"
+# define NARUTO1 "textures/naruto2.xpm"
+# define NARUTO2 "textures/naruto3.xpm"
+# define NARUTOLEFT "textures/naruto_left.xpm"
+# define NARUTORIGHT "textures/naruto_right.xpm"
+# define NARUTOUP "textures/naruto_up.xpm"
 # define HINATA_BACK "textures/hinata_back.xpm"
 # define HINATA "textures/hinata.xpm"
+# define SAKURA "textures/sakura.xpm"
+# define SAKURA1 "textures/sakura2.xpm"
+# define SAKURA2 "textures/sakura3.xpm"
 # define SIZE 64
+# define WIN_MESSAGE "YOU WON\nYOU DID %d MOVES.\nIS THIS YOUR BEST?\n"
+# define LOSE_MESSAGE "YOU LOSE...\nWANNA TRY AGAIN?\n"
 
 typedef struct s_map
 {
@@ -36,9 +44,14 @@ typedef struct s_map
 	int		height;
 	int		start_x;
 	int		start_y;
+	int		exit_x;
+	int		exit_y;
+	int		e_start_x;
+	int		e_start_y;
 	int		is_collect;
 	int		is_exit;
 	int		is_player;
+	int		is_enemy;
 	int		is_floor;
 	char	**design;
 }	t_map;
@@ -48,7 +61,16 @@ typedef struct s_player
 	int	x;
 	int	y;
 	int	moves;
+	int	is_moving;
+	int	frame_counter;
 }	t_player;
+
+typedef struct s_enemy
+{
+	int	x;
+	int	y;
+	int	direction;
+}	t_enemy;
 
 typedef struct s_data
 {
@@ -65,7 +87,12 @@ typedef struct s_game
 	void		*win;
 	t_map		*map;
 	t_player	*player;
+	t_enemy		*enemy;
 	t_data		*img;
+	int			frame_counter;
+	int			current_sprite;
+	int			p_current_sprite;
+	int			animation_speed;
 	int			pos;
 }	t_game;
 
@@ -104,5 +131,13 @@ void	ft_get_p(t_map *map);
 void	ft_finish(t_game *game);
 int		ft_quit(t_game *game);
 int		ft_check_map_name(char *file);
+int		ft_can_move(t_game *game, int x, int y);
+void	ft_get_e(t_map *map);
+int		ft_init_e(t_enemy *enemy);
+int		ft_enemy_animation(t_game *game);
+void	ft_destroy_create_image(t_game *game, char *str);
+void	ft_player_animation(t_game *game);
+int		ft_animation(t_game *game);
+void	ft_change_exit(t_game *game);
 
 #endif
