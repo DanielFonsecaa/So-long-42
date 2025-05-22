@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 19:41:18 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 12:32:59 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:06:42 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,22 @@ int	ft_exit_animation(t_game *game)
 			ft_destroy_create_image(game, HINATA_BACK3, x, y);
 	}
 	return (0);
+}
+
+void	ft_change_exit(t_game *game)
+{
+	int	res;
+	int	x;
+	int	y;
+
+	x = game->map->exit_x;
+	y = game->map->exit_y;
+	res = 64;
+	mlx_destroy_image(game->mlx, game->img[x + y].img);
+	game->img[x + y].img = mlx_xpm_file_to_image(game->mlx,
+			HINATA, &res, &res);
+	mlx_put_image_to_window(game->mlx, game->win,
+		game->img[x + y].img, x * res, y * res);
 }
 
 int	ft_animation(t_game *game)

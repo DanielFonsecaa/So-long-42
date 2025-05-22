@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 19:16:06 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 10:59:16 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:19:27 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,15 @@ void	ft_player_animation(t_game *game)
 	}
 }
 
-void	ft_change_exit(t_game *game)
+void	ft_win_animation(t_game *game)
 {
-	int	res;
-	int	x;
-	int	y;
+	ft_destroy_create_player_image(game, NARUTO_WIN);
+	ft_finish(game);
+}
 
-	x = game->map->exit_x;
-	y = game->map->exit_y;
-	res = 64;
-	mlx_destroy_image(game->mlx, game->img[x + y].img);
-	game->img[x + y].img = mlx_xpm_file_to_image(game->mlx,
-			HINATA, &res, &res);
-	mlx_put_image_to_window(game->mlx, game->win,
-		game->img[x + y].img, x * res, y * res);
+int	ft_lose_animation(t_game *game)
+{
+	ft_destroy_create_player_image(game, NARUTO_LOSE);
+	ft_quit(game);
+	return (0);
 }

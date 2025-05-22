@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:22:46 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 12:35:12 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:20:43 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	ft_quit(t_game *game)
 
 void	is_movement(int keysym, t_game *game)
 {
-	if (keysym == XK_w)
+	if (keysym == XK_w || keysym == XK_Up)
 		ft_up(game);
-	if (keysym == XK_a)
+	if (keysym == XK_a || keysym == XK_Left)
 		ft_left(game);
-	if (keysym == XK_s)
+	if (keysym == XK_s || keysym == XK_Down)
 		ft_down(game);
-	if (keysym == XK_d)
+	if (keysym == XK_d || keysym == XK_Right)
 		ft_rigth(game);
 }
 
@@ -42,7 +42,7 @@ int	handle_input(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 	{
-		ft_quit(game);
+		ft_lose_animation(game);
 		exit(1);
 	}
 	else
@@ -72,7 +72,7 @@ void	ft_start(t_map *map, t_player *player, t_game game)
 		ft_finish(&game);
 	}
 	mlx_hook(game.win, KeyPress, KeyPressMask, &handle_input, &game);
-	mlx_hook(game.win, DestroyNotify, 0, &ft_quit, &game);
+	mlx_hook(game.win, DestroyNotify, 0, &ft_lose_animation, &game);
 	mlx_loop_hook(game.mlx, &ft_animation, &game);
 	mlx_loop(game.mlx);
 }
