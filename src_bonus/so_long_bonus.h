@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 18:51:18 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/21 19:40:11 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:25:02 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@
 # define NARUTORIGHT "textures/naruto_right.xpm"
 # define NARUTOUP "textures/naruto_up.xpm"
 # define HINATA_BACK "textures/hinata_back.xpm"
+# define HINATA_BACK2 "textures/hinata_back2.xpm"
+# define HINATA_BACK3 "textures/hinata_back3.xpm"
 # define HINATA "textures/hinata.xpm"
+# define HINATA2 "textures/hinata2.xpm"
+# define HINATA3 "textures/hinata3.xpm"
 # define SAKURA "textures/sakura.xpm"
 # define SAKURA1 "textures/sakura2.xpm"
 # define SAKURA2 "textures/sakura3.xpm"
@@ -92,7 +96,10 @@ typedef struct s_game
 	int			frame_counter;
 	int			current_sprite;
 	int			p_current_sprite;
+	int			current_sprite_enemy;
+	int			frame_counter_enemy;
 	int			animation_speed;
+	int			animation_speed_enemy;
 	int			pos;
 }	t_game;
 
@@ -135,9 +142,13 @@ int		ft_can_move(t_game *game, int x, int y);
 void	ft_get_e(t_map *map);
 int		ft_init_e(t_enemy *enemy);
 int		ft_enemy_animation(t_game *game);
-void	ft_destroy_create_image(t_game *game, char *str);
+void	ft_destroy_create_image(t_game *game, char *str, int x, int y);
+void	ft_destroy_create_player_image(t_game *game, char *str);
 void	ft_player_animation(t_game *game);
 int		ft_animation(t_game *game);
 void	ft_change_exit(t_game *game);
+int		ft_exit_animation(t_game *game);
+int		ft_exit_2_animation(t_game *game);
+void	ft_print_moves(t_game *game);
 
 #endif

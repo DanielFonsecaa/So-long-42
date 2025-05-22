@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:37:54 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/21 19:08:17 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:37:05 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_up(t_game *game)
 		x * res, y / game->map->width * res);
 	game->player->y--;
 	game->player->moves++;
-	ft_printf("moves = %d\n", game->player->moves);
+	ft_print_moves(game);
 	game->player->is_moving = 0;
 }
 
@@ -63,7 +63,7 @@ void	ft_down(t_game *game)
 		x * res, y / game->map->width * res);
 	game->player->y++;
 	game->player->moves++;
-	ft_printf("moves = %d\n", game->player->moves);
+	ft_print_moves(game);
 	game->player->is_moving = 0;
 }
 
@@ -91,7 +91,7 @@ void	ft_left(t_game *game)
 		x * res, y / game->map->width * res);
 	game->player->x--;
 	game->player->moves++;
-	ft_printf("moves = %d\n", game->player->moves);
+	ft_print_moves(game);
 	game->player->is_moving = 0;
 }
 
@@ -119,6 +119,6 @@ void	ft_rigth(t_game *game)
 		x * res, y / game->map->width * res);
 	game->player->x++;
 	game->player->moves++;
-	ft_printf("moves = %d\n", game->player->moves);
+	ft_print_moves(game);
 	game->player->is_moving = 0;
 }

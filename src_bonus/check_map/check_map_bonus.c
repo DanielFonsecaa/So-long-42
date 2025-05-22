@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:12:26 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/21 11:34:11 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:44:13 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,16 @@ int	ft_check_bad_map(t_map *map)
 int	ft_check_map_name(char *file)
 {
 	char	*str;
+	char	*file_name;
+	int		len;
 
 	str = ft_strrchr(file, '.');
-	if (!str || ft_strncmp(str, EXTENSION, ft_strlen(EXTENSION) + 1))
+	file_name = ft_strrchr(file, '/');
+	if (file_name)
+		len = ft_strlen(ft_strrchr(file, '/')) - 1;
+	else
+		len = ft_strlen(file);
+	if (!str || len < 5 || ft_strncmp(str, EXTENSION, ft_strlen(EXTENSION) + 1))
 		return (0);
 	return (1);
 }

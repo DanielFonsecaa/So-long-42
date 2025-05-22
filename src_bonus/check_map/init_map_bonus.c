@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:32:38 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/21 14:15:20 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 12:21:04 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_put_value(t_map *map)
 {
+	int	i;
+
+	i = 0;
 	map->width = 0;
 	map->height = 0;
 	map->start_x = 0;
@@ -24,6 +27,8 @@ void	ft_put_value(t_map *map)
 	map->is_enemy = 0;
 	map->is_floor = 0;
 	map->design = NULL;
+	map->e_start_x = 0;
+	map->e_start_y = 0;
 }
 
 int	ft_linelen(char *str)

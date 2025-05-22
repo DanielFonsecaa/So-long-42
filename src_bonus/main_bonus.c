@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 15:21:29 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/21 18:07:07 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:32:36 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@ int	main(int argc, char **argv)
 	}
 	game.mlx = mlx_init();
 	if (!ft_init_map(&map, argv[1]))
-	{
-		ft_cancel(&map, &game, "map");
-		return (0);
-	}
+		return (ft_cancel(&map, &game, "map"), 0);
 	if (!ft_init_p(&player))
 		return (ft_cancel(&map, &game, "player"), 0);
 	if (!ft_init_e(&enemy))
 		return (ft_cancel(&map, &game, "enemy"), 0);
 	game.enemy = &enemy;
+	game.frame_counter_enemy = 0;
+	game.current_sprite_enemy = 0;
 	game.frame_counter = 0;
 	game.current_sprite = 0;
 	ft_start(&map, &player, game);
