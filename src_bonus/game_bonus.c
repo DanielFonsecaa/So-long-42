@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:22:46 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/23 10:13:13 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 12:09:21 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	ft_start(t_map *map, t_player *player, t_game game)
 		return (ft_finish(&game));
 	}
 	game.pos = 0;
-	game.win = mlx_new_window(game.mlx, map->width * SIZE,
-			map->height * SIZE, "Naruto");
+	game.win = mlx_new_window(game.mlx, (map->width * SIZE),
+			(map->height * SIZE), "Naruto");
 	if (!ft_render_map(&game))
 	{
 		ft_printf("Error\n Could not render the game");

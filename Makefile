@@ -70,7 +70,7 @@ CC						= cc
 
 CFLAGS				= -Wall -Wextra -Werror -g
 
-RFLAGS				= -lm -lX11 -lXext
+RFLAGS				= -L ./lib/mlx -lmlx -L/usr/lib/X11 -lXext -lX11 -lm -g3
 INC						= -I $(INC_PATH)
 BONUS_INC						= -I $(BONUS_INC_PATH)
 
