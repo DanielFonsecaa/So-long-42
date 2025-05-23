@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 15:21:29 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 11:32:36 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:04:42 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int	main(int argc, char **argv)
 	t_enemy		enemy;
 
 	if (argc != 2)
-	{
-		ft_printf("Error\n Usage: ./so_long <map_file.ber>\n");
-		return (0);
-	}
+		return (ft_printf("Error\n Usage: ./so_long <map_file.ber>\n"), 0);
+	ft_memset(&game, 0, sizeof(t_game));
+	game.mlx = NULL;
 	game.mlx = mlx_init();
 	if (!ft_init_map(&map, argv[1]))
 		return (ft_cancel(&map, &game, "map"), 0);

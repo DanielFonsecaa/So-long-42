@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 18:51:18 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 13:16:43 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:33:58 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_player
 	int	moves;
 	int	is_moving;
 	int	frame_counter;
+	int	is_win;
 }	t_player;
 
 typedef struct s_enemy
@@ -102,6 +103,8 @@ typedef struct s_game
 	int			frame_counter_enemy;
 	int			animation_speed;
 	int			animation_speed_enemy;
+	int			exit_timer;
+	int			is_exiting;
 	int			pos;
 }	t_game;
 
@@ -154,5 +157,6 @@ int		ft_exit_2_animation(t_game *game);
 void	ft_print_moves(t_game *game);
 void	ft_win_animation(t_game *game);
 int		ft_lose_animation(t_game *game);
+int		ft_handle_exit_timer(t_game *game, char *str);
 
 #endif

@@ -5,7 +5,7 @@ MAKE	= make -C
 #==============================================================================#
 
 LIBFT_URL 	= git@github.com:DanielFonsecaa/libft_gnl_printf.git
-MLX_URL			= https://cdn.intra.42.fr/document/document/32396/minilibx-linux.tgz
+MLX_URL			= https://cdn.intra.42.fr/document/document/32345/minilibx-linux.tgz
 
 #==============================================================================#
 #                                     NAMES                                    #
@@ -47,7 +47,7 @@ BONUS_FILES	= main_bonus.c game_bonus.c movements/movements_bonus.c movements/ch
 				check_map/check_map_bonus.c player/check_player_bonus.c check_map/init_map_bonus.c \
 				check_map/create_map_bonus.c free_bonus.c player/init_player_bonus.c \
 				enemy/init_enemy_bonus.c animation/animation_bonus.c animation/animation2_bonus.c \
-				movements/print_mov_bonus.c
+				movements/print_mov_bonus.c animation/exit_animation_bonus.c 
 
 BONUS_SRC						= $(addprefix $(BONUS_SRC_PATH)/, $(BONUS_FILES))
 BONUS_OBJS					= $(BONUS_SRC:$(BONUS_SRC_PATH)/%.c=$(BONUS_BUILD_PATH)/%.o)

@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:12:26 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 13:13:07 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:58:07 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int	ft_can_move(t_game *game, int x, int y)
 		game->map->design[y][x] = '0';
 	}
 	if (game->map->design[y][x] == 'X')
-	{
-		ft_printf(LOSE_MESSAGE);
 		return (ft_lose_animation(game), 0);
-	}
 	if (game->map->design[y][x] == 'E' && !game->map->is_collect)
 	{
 		game->player->moves++;

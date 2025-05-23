@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player_bonus.c                                :+:      :+:    :+:   */
+/*   exit_animation_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 13:20:45 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/23 10:14:29 by dda-fons         ###   ########.fr       */
+/*   Created: 2025/05/23 10:02:32 by dda-fons          #+#    #+#             */
+/*   Updated: 2025/05/23 10:45:08 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-int	ft_init_p(t_player *player)
+int	ft_handle_exit_timer(t_game *game, char *str)
 {
-	if (!player)
-		return (0);
-	player->x = 0;
-	player->y = 0;
-	player->moves = 0;
-	player->is_moving = 0;
-	player->frame_counter = 0;
-	player->is_win = 0;
-	return (1);
+	int	middle_x;
+	int	middle_y;
+
+	middle_x = (SIZE * game->map->width) / 2 - (ft_strlen(str) * 5);
+	middle_y = (SIZE * game->map->height) / 2;
+	mlx_string_put(game->mlx, game->win, middle_x, middle_y, 0x000000, str);
+	mlx_do_sync(game->mlx);
+	if (game->is_exiting)
+	{
+		while (game->exit_timer <= 400000000)
+			game->exit_timer++;
+	}
+	return (0);
 }

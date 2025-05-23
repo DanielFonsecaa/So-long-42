@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:32:38 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 11:10:38 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:16:48 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	ft_mapsize(t_map *map, char *file)
 
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
+	if (!str)
+		return (close(fd), 0);
 	map->height = 1;
 	i = ft_linelen(str);
 	free(str);
@@ -74,7 +76,7 @@ int	ft_mapsize(t_map *map, char *file)
 		map->height++;
 		map->width = ft_linelen(str);
 		if (map->width != i)
-			return (0);
+			return (free(str), 0);
 		free(str);
 		str = NULL;
 	}

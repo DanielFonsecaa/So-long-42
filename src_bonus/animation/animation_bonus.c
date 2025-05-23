@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 19:16:06 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 13:19:27 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:33:47 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,19 @@ void	ft_player_animation(t_game *game)
 void	ft_win_animation(t_game *game)
 {
 	ft_destroy_create_player_image(game, NARUTO_WIN);
+	game->is_exiting = 1;
+	game->exit_timer = 0;
+	game->player->is_win = 1;
+	ft_handle_exit_timer(game, "YOU WON!");
 	ft_finish(game);
 }
 
 int	ft_lose_animation(t_game *game)
 {
 	ft_destroy_create_player_image(game, NARUTO_LOSE);
+	game->is_exiting = 1;
+	game->exit_timer = 0;
+	ft_handle_exit_timer(game, "YOU LOST!");
 	ft_quit(game);
 	return (0);
 }

@@ -14,22 +14,22 @@
 
 void	ft_print_moves(t_game *game)
 {
-    char    *str;
-    char    *moves;
-    int     res;
-    void    *bg_img;
+	char	*str;
+	char	*moves;
+	int		res;
+	void	*bg_img;
 
-    res = 64;
-    bg_img = mlx_new_image(game->mlx, SIZE, SIZE - 40);
-    mlx_put_image_to_window(game->mlx, game->win, bg_img, SIZE - 30, SIZE - 30);
-    mlx_destroy_image(game->mlx, bg_img);
-    str = ft_itoa(game->player->moves);
-    if (!str)
-        return;
-    moves = ft_strjoin("MOVES: ", str);
-    free(str);
-    if (!moves)
-        return ;
-    mlx_string_put(game->mlx, game->win, SIZE - 25, SIZE - 15, 0xFFFFFF, moves);
-    free(moves);
+	res = 64;
+	bg_img = mlx_new_image(game->mlx, SIZE, SIZE - 40);
+	mlx_put_image_to_window(game->mlx, game->win, bg_img, SIZE - 30, SIZE - 30);
+	mlx_destroy_image(game->mlx, bg_img);
+	str = ft_itoa(game->player->moves);
+	if (!str)
+		return ;
+	moves = ft_strjoin("MOVES: ", str);
+	free(str);
+	if (!moves)
+		return ;
+	mlx_string_put(game->mlx, game->win, SIZE - 25, SIZE - 15, 0xFFFFFF, moves);
+	free(moves);
 }

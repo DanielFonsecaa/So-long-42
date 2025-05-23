@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:22:46 by dda-fons          #+#    #+#             */
-/*   Updated: 2025/05/22 13:20:43 by dda-fons         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:13:13 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	ft_start(t_map *map, t_player *player, t_game game)
 	game.player->x = map->start_x;
 	game.player->y = map->start_y;
 	game.p_current_sprite = 0;
+	game.exit_timer = 0;
+	game.is_exiting = 0;
 	game.img = malloc(sizeof(t_data) * (game.map->height * game.map->width));
 	if (!game.img)
 	{
