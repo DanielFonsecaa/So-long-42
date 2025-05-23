@@ -17,7 +17,7 @@ The **so_long** project is a small 2D game where the player must navigate throug
   
 | Grade                                                             | Evaluation Information           |
 | :---------------------------------------------------------------- | :------------------------------- |
-| <img src="https://img.shields.io/badge/124%20%2F%20100%20%E2%98%85-sucess"/>  | `2 peers` `30 mins`  |
+| <img src="https://img.shields.io/badge/124%20%2F%20100%20%E2%98%85-sucess"/>  | `3 peers` `30 mins`  |
 </div>
 
 ---
